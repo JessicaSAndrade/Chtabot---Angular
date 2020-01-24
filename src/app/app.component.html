@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div class="row align-items-center">
+    <div class="mx-auto">
+      <!-- <h3><i class="fas fa-robot"></i>ChatBoot com DialogFLow </h3> -->
+      <h1 class="titulo">HelthBott</h1>
+    </div>
+  </div>
+
+  <div class="row align-items-center justify-content-center">
+    <div class="col-lg-8">
+      <ul #scrollMe class="messages">
+        <div *ngFor="let msg of resultados ">
+          <li class="message appeared" [ngClass]="{'left':msg.remetente === 'boot',
+                        'right':msg.remetente === 'eu'     }">
+            <div class="avatar"></div>
+            <div class="text_wrapper">
+              <div class="text">
+                {{msg.mensagem}}
+                <p class="time"> ({{msg.data | date:'HH:mm:ss'}})</p>
+              </div>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row align-items-center justify-content-center" style="margin-top: 2px;">
+    <div class="col-sm-6">
+      <input type="text" class="form-control " (keyup.enter)="sendMessage()" [(ngModel)]="msg" />
+      <a class="btn" (click)="sendMessage()">
+        <img src="../assets/img/cartaenviar.png" class="btn" alt="" />
+      </a>
+    </div>
+  </div>
+</div>
